@@ -1,6 +1,6 @@
 
 var AboutPage = (function() {
-	
+
 	this.professionsList =
 	[
 		"Software Engineer",
@@ -28,9 +28,14 @@ var AboutPage = (function() {
 				chosenIndex++;
 			}
 
+			$("#profession-text").removeClass('fadeInDown');
+			$("#profession-text").addClass("fadeOutDown");
+
 			$("#profession-text").fadeOut(2000, function()
 			{
-				$("#profession-text").html(professionsList[chosenIndex]).fadeIn(2000);
+				$("#profession-text").removeClass("fadeOutDown");
+				$("#profession-text").addClass("fadeInDown");
+				$("#profession-text").html(professionsList[chosenIndex]).fadeIn(0);//fadeIn(2000);
 			});
 		}
 	};
@@ -53,8 +58,8 @@ function ajaxLoadPage(pageName)
 
 		if(pageName === "about")
 		{
-			$("#profession-text").fadeOut(0).fadeIn(2000);
-			textCycleInterval = window.setInterval(AboutPage.cycleText, 5000);
+			$("#profession-text").addClass('animated fadeInDown');//fadeOut(0).fadeIn(2000);
+			textCycleInterval = window.setInterval(AboutPage.cycleText, 10000);
 		}
 		else if(typeof textCycleInterval !== 'undefined')
 		{
@@ -66,11 +71,5 @@ function ajaxLoadPage(pageName)
 String.prototype.capitalizeFirstLetter = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
 };
-
-// $(document).ready(function() {
-// 	ajaxLoadPage("about");
-// 	$('#pageContent').load('./about-page.html', null, function(responseTxt, textStatus, xhr) {
-// 	});
-// });
 
 $(document).ready(ajaxLoadPage("about"));

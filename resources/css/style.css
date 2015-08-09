@@ -22,6 +22,13 @@ a:hover {
   font-size: 18px;
 }
 
+.profession-text
+{
+  -webkit-animation-duration: 2.5s;
+  -moz-animation-duration: 2.5s;
+  animation-duration: 2.5s;
+}
+
 /* Circular pictures */
 .circular-about-pic-large
 {
